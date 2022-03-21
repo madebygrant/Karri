@@ -1,0 +1,26 @@
+.wpcf7 form {
+    .wpcf7-response-output {
+        margin: 2rem 0 !important;
+        border: 0 !important;
+        text-align: center;
+        padding: 1rem !important;
+        background-color: var(--col-bg);
+        color: var(--col-text);
+    }
+
+    &.sent {
+        .wpcf7-response-output {
+            --col-bg: #76c893;
+            --col-text: #fff;
+        }
+    }
+
+    &.invalid {
+        --col-bg: #d62828;
+        --col-text: #fff;
+
+        .wpcf7-not-valid-tip {
+            color: var(--col-bg) !important;
+        }
+    }
+}

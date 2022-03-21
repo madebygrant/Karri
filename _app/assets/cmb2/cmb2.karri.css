@@ -1,0 +1,158 @@
+.edit-post-meta-boxes-area.is-normal .postbox{
+    box-shadow: none !important; border: 1px solid #e5e5e5 !important;
+}
+.edit-post-meta-boxes-area .postbox .inside, .postbox.closed h2.hndle{
+    border-bottom: none !important;
+}
+.edit-post-meta-boxes-area.is-normal .cmb2-metabox{
+    padding-top: 16px;
+}
+
+/* Labels */
+.cmb-th, #side-sortables .cmb2-wrap label, .inner-sidebar .cmb2-wrap label{
+	font-weight: 500;
+}
+
+.cmb-group-name{
+    padding: 8px 12px 8px 0 !important;
+}
+
+/* WYSIWYG Editor */
+.cmb-type-wysiwyg .mce-edit-area iframe{
+	height: 430px !important;
+}
+
+/* Tabs */
+.cmb2-metabox .tab-nav, .cmb2-metabox .tab-nav li{
+    display: inline-flex;
+    font-family: "Quicksand", "Libre Franklin", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.cmb2-metabox .tab-nav{
+    vertical-align: baseline; width: 100%; margin-bottom: 32px; /*border-bottom: 1px solid #35373f;*/
+    border-bottom: 2px solid #aaaaaa; position: relative;
+}
+.cmb2-metabox .tab-nav li{
+    vertical-align: bottom; width: auto; margin: 0; border: none; box-shadow: none !important;
+    position: relative;
+}
+.cmb2-metabox .tab-nav li a{
+    position: relative; top: 2px; padding: 0.5em 1.25em; box-shadow: none; background-color: transparent; margin-left: 0 !important; color: #aaaaaa; text-transform: uppercase; letter-spacing: 0.075em; font-size: 12px; font-weight: 500;
+    border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;
+    border-left: none; border-right: none; border-top: none;
+    transition: all .15s linear; -webkit-transition: all .15s linear; 
+    
+}
+/*
+.cmb2-metabox .tab-nav li a:after{
+    content: ""; position: absolute; top: 0; right: -2px; border-style: solid; border-color: transparent #fff transparent transparent; border-width: 0 15px 15px 0;
+}
+*/
+.cmb2-metabox .tab-nav li a:hover, .cmb2-metabox .tab-nav li a:focus{
+    color: #D16666; border-bottom-color: #D16666;
+}
+.cmb2-metabox .tab-nav li.ui-tabs-active a{
+    color: #35373f; border-bottom-color: #35373f; font-weight: 700; /*border-bottom-color: #35373f;*/
+}
+.tab-slider{
+    background-color: #35373f; height: 2px;
+    display: inline-block; position: absolute; z-index: 99; bottom: -2px;
+    transition: all .35s linear; -webkit-transition: all .35s linear; 
+}
+
+.cmb2-metabox .cmb-type-tab, .cmb2-metabox .cmb-type-group-tab{
+	display: none !important;
+}
+
+.cmb-tab-confirm.hide{
+	display: none !important;
+}
+
+/* Info Field */
+.cmb2-info.cmb2-info--no-name{
+    position: relative; left: -10px;
+}
+.tab--metabox .cmb2-info.cmb2-info--no-name{
+    left: 0 !important;
+}  
+.cmb2-info:not(.cmb2-info--first){
+    margin-top: 3rem;
+} 
+.cmb2-info:not(.cmb2-info--default) p.cmb2-metabox-info{
+    font-style: normal; color: unset;
+}
+.cmb2-info .cmb2-info__heading {
+    color: #222222; font-weight: bold; text-transform: uppercase; letter-spacing: .025em;
+}
+
+/* Toggle Switch */
+.cmb2-switch{
+	margin-right: 15px; margin-bottom: 5px; float: left;
+}
+.cmb2-switch label {
+	cursor: pointer;
+}
+.cmb2-metabox-description{
+	width: 100%; display: inline-block; padding-top: .75em !important;
+}
+.cmb2-switch input {
+	display: none !important; 
+}
+.cmb2-enable, .cmb2-disable {
+	background: #F5F5F5; color: #95999d; border: 1px solid #bfbfbf; display: block; float: left;
+}
+.cmb2-enable {
+	border-radius: 3px 0 0 3px; border-right: 0 none;
+}
+.cmb2-disable {
+	border-left: 0 none; border-radius: 0 3px 3px 0;
+}
+.cmb2-enable span, .cmb2-disable span {
+	line-height: 30px; display: block; font-weight: normal; white-space: nowrap; padding: 0 10px;
+}
+.cmb2-enable.selected, .cmb2-disable.selected {
+	background-color: #35373f; background-image: none; border-color: #35373f; box-shadow: none; color: #fff;
+}
+
+.google-location-list-row{
+	width: 100%; display: block; margin-top: 1rem;
+}
+.cmb2-metabox .google-location-search, .cmb2-metabox .google-location-list-single input{
+	width: 100%; max-width: 500px;
+}
+.cmb2-metabox .google-location-list-textarea textarea{
+	width: 100% !important; white-space: pre-wrap;
+}
+.cmb2-metabox .google-location-search{
+	float: left;
+}
+.cmb2-metabox .google-location-add-button{
+	margin-left: 1em; line-height: 30px; height: 30px;
+}
+
+/* Options Pages */
+.cmb2-options-page .cmb2-metabox > .cmb-row{
+    box-shadow: none !important;
+    padding-left: 0 !important; padding-right: 0 !important; padding-bottom: 0 !important;
+    border-left: 0 !important; border-right: 0 !important; border-bottom: 0 !important;
+}
+.cmb2-options-page .cmb-form .cmb-row:first-of-type{
+    border-top: 0 !important; padding-top: 0 !important;
+}
+.cmb2-options-page .cmb-form{
+    background-color: #fff; padding: 1.5rem; border: 1px solid #e5e5e5 !important;
+}
+.cmb2-options-page .cmb-form .cmb-row .cmb-th, .cmb2-options-page .cmb-form .cmb-row .cmb-td{
+    box-sizing: border-box;
+}
+.cmb2-options-page .cmb-form .cmb-row .cmb-td{
+    width: calc(100% - 200px);
+}
+/*
+.cmb2-options-page .cmb-form .cmb-row:not(.cmb-type-tab) + .cmb-row:not(.cmb-type-tab){
+    margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid #e9e9e9;
+}
+*/
+.cmb2-options-page .cmb-form .submit{
+    border-top: 1px solid #e9e9e9; padding-top: 1.25rem; text-align: right;
+    padding-bottom: 0;
+}

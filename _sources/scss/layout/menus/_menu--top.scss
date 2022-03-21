@@ -1,0 +1,19 @@
+// ----------- Website top navigation -----------
+
+.navigation__menu--main{
+    
+    li{
+        --col-menu-bg: transparent;
+        --col-menu-bg-hover: var(--col-alpha);
+        --col-menu-bg-active: #222;
+        --col-menu-bg-current: #222;
+        --col-menu-text: var(--col-text);
+        --col-menu-text-hover: #fff;
+        --col-menu-text-active: #fff;
+        --col-menu-text-current: #fff;
+
+        a{
+            padding: .35rem .75rem; width: 100%;
+        }
+    }
+}

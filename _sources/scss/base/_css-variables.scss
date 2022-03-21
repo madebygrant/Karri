@@ -1,0 +1,44 @@
+// ----------- CSS Variables -----------
+
+@mixin base-colours{
+    --col-alpha: #406bb6;
+    --col-bravo: #333333;
+    
+    --col-text: #222222;
+    --col-page-background: #e5e5e5;
+    --col-background: #ffffff;
+    --col-background-alt: #e5e5e5;
+
+    --col-line: #cccccc;
+}
+
+:root{
+    --font-main: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-alt: var(--font-main);
+    --font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    --font-size: 16px;
+
+    --spacing: 1rem;
+
+    --base-animation: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    --base-animation-length: .25s;
+
+    @include base-colours;
+}
+
+// Links
+a:not(.wp-block-button__link):not(.menu-item__link):not(.button){
+    --col-link: #222222;
+    --col-link-hover: #424141;
+    --col-link-active: #7e7d7d;
+}
+
+// Form Inputs (excluding buttons)
+input:not([type="submit"]):not([type="reset"]):not([type="button"]), select, textarea, .input--radio + span, .input--checkbox + span, .n-select{
+    --col-input-background: #fff;
+    --col-input-text: var(--col-text);
+    --col-input-line: var(--col-line);
+    --col-input-disabled: #eee;
+    --padding-y: .35rem;
+    --padding-x: .5rem;
+}

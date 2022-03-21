@@ -1,0 +1,141 @@
+// ----------- WordPress -----------
+
+// -- Alignments
+
+.alignfull {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    max-width: 100vw;
+    width: 100vw;
+    text-align: center;
+}
+
+.alignwide {
+    max-width: 100%;
+}
+
+.alignleft {
+    float: left;
+    margin: 0 1em 1em 0;
+    display: block;
+    clear: both;
+
+    @include MQ(ML) {
+        width: 100%;
+        margin: 1em 0;
+        text-align: center;
+    }
+}
+
+.aligncenter {
+    margin: 1em auto !important;
+    display: block;
+    text-align: center;
+    clear: both;
+}
+
+.alignright {
+    float: right;
+    margin: 0 0 1em 1em;
+    display: block;
+    text-align: right;
+
+    @include MQ(ML) {
+        width: 100%;
+        margin: 1em 0;
+        text-align: center;
+    }
+}
+
+.alignnone {
+    float: none;
+    text-align: center;
+    margin: 1em;
+    clear: both;
+}
+
+// -----------
+
+// -- Misc
+
+// Image Caption
+.wp-caption-text {
+    text-align: center !important;
+    font-style: italic;
+    padding: 0.5em 0;
+}
+
+// Emojis
+img.emoji {
+    max-width: 24px;
+    height: auto;
+    width: auto;
+}
+
+// Text
+.has-normal-font-size {
+    font-size: unset;
+}
+
+// ------------------------
+
+// -- WordPress Blocks
+
+// Buttons
+.wp-block-button {
+    &__link {
+        @extend %button-vars;
+        @extend %button-colour-vars;
+        @extend %button-default;
+
+        &:not(.has-background) {
+            background-color: var(--col-bg);
+            color: var(--col-text);
+
+            &:hover {
+                background-color: var(--col-bg-hover);
+                color: var(--col-text-hover);
+            }
+            &:active {
+                background-color: var(--col-bg-active);
+                color: var(--col-text-active);
+            }
+        }
+
+        &.has-background {
+            &:hover {
+                opacity: 0.8;
+            }
+            &:active {
+                opacity: 1;
+                background-color: var(--col-bg-active) !important;
+                color: var(--col-text-active) !important;
+            }
+        }
+    }
+}
+
+// Social Media Links
+.wp-social-link {
+    a {
+        --col-link: #fff;
+        --col-link-hover: #fff;
+        --col-link-active: #fff;
+    }
+}
+
+// Columns
+.wp-block-column {
+    @media (min-width: 600px) and (max-width: 781px) {
+        margin-bottom: 2rem;
+    }
+    @media (max-width: 599px) {
+        > .wp-block-image {
+            text-align: center;
+        }
+
+        &:not(:last-of-type) {
+            margin-bottom: 2rem;
+        }
+    }
+}

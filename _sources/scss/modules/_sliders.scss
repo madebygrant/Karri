@@ -1,0 +1,140 @@
+// ----------- Slider -----------
+
+.slider {
+    .slide {
+        position: relative;
+
+        &__video,
+        &__image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__content {
+            background-color: #ccc;
+            color: var(--col-text);
+            padding: 2rem;
+            max-width: 50%;
+            position: absolute;
+            left: 3rem;
+            @include center(y);
+        }
+
+        &__text {
+            > * + * {
+                margin-top: 1em;
+            }
+        }
+
+        &__button {
+            @extend %button-vars;
+            @extend %button-colour-vars;
+            @extend %button-default;
+
+            margin-top: 1em;
+            background-color: var(--col-bg);
+            color: var(--col-text);
+
+            &:hover {
+                background-color: var(--col-bg-hover);
+                color: var(--col-text-hover);
+            }
+
+            &:active {
+                background-color: var(--col-bg-active);
+                color: var(--col-text-active);
+            }
+        }
+    }
+}
+
+// -- Pagination
+.tns-nav {
+    position: absolute;
+    bottom: 24px;
+    left: 10%;
+    //left: 50%; transform: translateX(-50%); // Centered
+
+    > button {
+        --button-min-width: auto !important;
+        --button-padding: 0 !important;
+
+        &:not(.tns-nav-active) {
+            --col-bg: #eee;
+            --col-bg-hover: #eee;
+            --col-bg-active: var(--col-alpha);
+        }
+        &.tns-nav-active {
+            --col-bg: var(--col-alpha);
+            --col-bg-hover: var(--col-alpha);
+            --col-bg-active: var(--col-alpha);
+        }
+
+        width: 50px;
+        height: 8px;
+        line-height: 1 !important;
+        background-color: var(--col-bg);
+
+        &:hover {
+            background-color: var(--col-bg-hover);
+        }
+
+        &:active {
+            background-color: var(--col-bg-active);
+        }
+
+        &:not(:last-of-type) {
+            margin-right: 8px;
+        }
+    }
+}
+
+// -- Chevrons (Prev/Next)
+.tns-controls {
+    --icon: url(#{$icon--chevron-down-w});
+
+    > * {
+        width: 42px;
+        height: 42px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        position: absolute;
+        z-index: 5;
+        top: 50%;
+        bottom: auto;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 32px;
+            background-image: var(--icon);
+        }
+    }
+
+    > *:first-of-type {
+        left: 16px;
+        transform: translateY(-50%);
+
+        &:after {
+            transform: rotate(90deg);
+        }
+    }
+    
+    > *:last-of-type {
+        right: 16px;
+        transform: translateY(-50%);
+
+        &:after {
+            transform: rotate(-90deg);
+        }
+    }
+}

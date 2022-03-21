@@ -1,0 +1,324 @@
+// ----------- Addon: Nice Select Boxes -----------
+
+$close-icon: 'data:image/svg+xml;utf8,<svg width="15" height="15" viewBox="0 0 15 15" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 1V14M1 7.5H14" stroke="white"/></svg>';
+
+// ------------------------
+
+.cf7-select .select,
+.n-select {
+    select {
+        display: none;
+    }
+}
+
+// ------------------------
+
+.select,
+.n-select {
+    opacity: 1;
+    transition: opacity var(--base-animation-length) linear;
+
+    &.n-select--loading,
+    &.loading {
+        opacity: 0;
+    }
+}
+
+// -- Select Box
+.n-select {
+    --ns-width: 400px;
+    --ns-height: 35vh;
+    --ns-icon-width: 42px;
+    --ns-pill-text-size: 13px;
+    --ns-choose-text: 'Choose your option';
+    --col-ns-background: #fff;
+
+    &--enabled {
+        background-color: var(--col-ns-background);
+        font-size: 1em;
+        height: 2.5em;
+        width: 100%;
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        max-width: var(--ns-width);
+
+        &:before {
+            content: '';
+            background-image: url(#{$icon--chevron-down-b});
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 0.5em;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            font-size: 2em;
+            width: var(--ns-icon-width);
+            height: 100%;
+        }
+
+        > * {
+            z-index: 9999;
+        }
+
+        &.n-select--active {
+            &:before {
+                transform: rotateX(-180deg);
+            }
+            .ns-placeholder {
+                visibility: hidden;
+
+                &:before {
+                    visibility: visible;
+                }
+            }
+            .ns-box {
+                display: block;
+                animation: nsFadeInUp 500ms;
+            }
+        }
+    }
+}
+
+// ------------------------
+
+// -- Placeholder text
+.ns-placeholder {
+    position: absolute;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    visibility: visible;
+    padding: 0 var(--ns-icon-width) 0 12px;
+    @include center(y);
+
+    &:before {
+        content: attr(data-placeholder);
+        position: absolute;
+        padding: 0.5em 0;
+        visibility: hidden;
+        @include center(y);
+    }
+
+    &--truncate {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+// ------------------------
+
+// -- Multi-select Pills
+.ns-pills {
+    --col-ns-pill-text: #555;
+    --col-ns-pill-text-active: #fff;
+    --col-ns-pill-background: #dee1e4;
+    --col-ns-pill-background-hover: #c6c9cc;
+    --col-ns-pill-background-active: #555;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    width: 100%;
+    max-width: var(--ns-width);
+    margin-top: 0.5rem;
+    display: none;
+
+    &--visible {
+        display: flex;
+    }
+
+    &__pill {
+        padding: 0.5em 1em;
+        font-size: var(--ns-pill-text-size);
+        cursor: pointer;
+        position: relative;
+        background-color: var(--col-ns-pill-background);
+        color: var(--col-ns-pill-text);
+        box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.25);
+        margin-bottom: 0.5em;
+        transition: all 0.15s linear;
+        overflow: hidden;
+
+        &:not(:last-of-type) {
+            margin-right: 0.5em;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            z-index: 1;
+            left: calc(50% - 12px);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 24px;
+            background-image: url($close-icon);
+            transform: rotate(45deg);
+            opacity: 0;
+        }
+
+        &:after {
+            content: '';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0px;
+            font-weight: bold;
+            transition: all 0.15s linear;
+            background-color: var(--col-ns-pill-background-hover);
+            opacity: 0;
+        }
+
+        &:hover:before,
+        &:focus:before,
+        &:hover:after,
+        &:focus:after {
+            opacity: 1;
+        }
+
+        &:active:after {
+            background-color: var(--col-ns-pill-background-active);
+            color: var(--col-ns-pill-text-active);
+        }
+    }
+}
+
+// ------------------------
+
+// -- Options List
+.ns-box {
+    --col-ns-opt-background: #f7f7f7;
+    --col-ns-opt-background-alt: #f0f0f0;
+    --col-ns-opt-background-hover: #ddd;
+    --col-ns-opt-text-hover: var(--col-text);
+    --col-ns-opt-background-active: #444;
+    --col-ns-opt-text-active: #fff;
+    --col-ns-scrollTrack: #555;
+    --col-ns-scrollThumb: #777;
+
+    position: absolute;
+    top: calc(100% + 4px);
+    display: none;
+    list-style-type: none;
+    text-align: left;
+    font-size: 0.85em;
+    overflow: auto;
+    box-sizing: border-box;
+    width: 100%;
+    max-height: var(--ns-height);
+    background-color: var(--col-ns-opt-background);
+
+    // ** Options
+
+    &__option {
+        display: list-item;
+        font-size: 1em;
+        padding: 0.5em 1em;
+        user-select: none;
+        position: relative;
+
+        &:nth-child(even) {
+            background-color: var(--col-ns-opt-background-alt);
+        }
+
+        &:hover:not(.ns-box__option--selected) {
+            background-color: var(--col-ns-opt-background-hover);
+            color: var(--col-ns-opt-text-hover);
+        }
+
+        &:active {
+            background-color: var(--col-ns-opt-background-active);
+            color: var(--col-ns-opt-text-active);
+        }
+
+        &:after {
+            font-size: 0.5em;
+            margin-left: 5px;
+            display: none;
+        }
+
+        &--selected {
+            background-color: var(--col-ns-opt-background-active) !important;
+            color: var(--col-ns-opt-text-active) !important;
+
+            ::after {
+                display: inline;
+            }
+        }
+
+        &--child {
+            padding-left: 2em;
+            position: relative;
+
+            &:before {
+                content: var(--ns-choose-text);
+                position: absolute;
+                left: 1em;
+                @include center(y);
+            }
+        }
+
+        input[type='checkbox'] {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+}
+
+// ------------------------
+
+// -- Scrollbar
+.ns-box::-webkit-scrollbar-track,
+#autocomplete-results::-webkit-scrollbar-track {
+    box-shadow: none;
+    background-color: var(--col-ns-scrollTrack);
+}
+.ns-box::-webkit-scrollbar,
+#autocomplete-results::-webkit-scrollbar {
+    width: 10px;
+}
+.ns-box::-webkit-scrollbar-thumb,
+#autocomplete-results::-webkit-scrollbar-thumb {
+    background-color: var(--col-ns-scrollThumb);
+}
+
+// ------------------------
+
+// -- Multi Selected
+.n-select--enabled.n-select--multi-select .ns-box-options--selected {
+    background-color: var(--col-ns-pill-background-active) !important;
+
+    label {
+        color: var(--col-ns-pill-text-active);
+    }
+}
+
+// ------------------------
+
+@keyframes nsFadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}

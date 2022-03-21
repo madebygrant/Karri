@@ -1,0 +1,94 @@
+body[data-kin='side'] {
+    .kin-toggle-button {
+        --span-colour: var(--col-line);
+        --span-colour-active: #ffffff;
+
+        top: 16px;
+        left: 16px;
+    }
+
+    &.kin-is--loaded {
+        .kin {
+            --background-colour: #252525;
+            --background-colour-2: #3b3b3b;
+            --background-colour-3: #504f4f;
+            --background-colour-4: #666666;
+            --background-colour-current: var(--col-alpha);
+            --text-colour: #fff;
+            --link-colour-current: #fff;
+            --item-height: 38px;
+            --width: 50vw;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 98;
+            height: 100vh;
+            padding: 64px 0 24px;
+            color: var(--text-colour);
+            background-color: var(--background-colour);
+            display: flex;
+            flex-direction: column; 
+            //justify-content: center;
+            transition: var(--animation-speed) left cubic-bezier(0.77, 0, 0.175, 1);
+
+            @media only screen and (min-width: 769px) {
+                width: var(--width);
+                left: calc(var(--width) * -1);
+            }
+            @media only screen and (max-width: 768px) {
+                width: 100vw;
+                left: -100vw;
+            }
+
+            &--active {
+                left: 0 !important;
+            }
+
+            &__inner {
+                ul {
+                    padding: 0;
+                }
+            }
+
+            &__label {
+                --glyph: url(#{$icon--chevron-down-w});
+            }
+
+            &__item {
+                line-height: var(--item-height); 
+                //width: max-content; 
+                //padding-right: 32px;
+
+                a {
+                    --col-link: #fff;
+                    --col-link-hover: #fff;
+                    --col-link-active: #fff;
+
+                    padding-left: 24px;
+                    padding-right: 24px;
+                }
+            }
+
+            &__drop {
+                li {
+                    background-color: var(--background-colour-2);
+                    padding-left: 0;
+
+                    ul li {
+                        background-color: var(--background-colour-3);
+
+                        ul li {
+                            background-color: var(--background-colour-4);
+                        }
+                    }
+                }
+            }
+
+            li.current_page_item > a {
+                color: var(--link-colour-current);
+                background-color: var(--background-colour-current);
+            }
+        }
+    }
+}

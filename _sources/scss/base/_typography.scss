@@ -1,0 +1,159 @@
+// ----------- Typography -----------
+
+// -- Headings
+
+//  Heading Styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading {
+    font-family: var(--font-alt);
+}
+h1,
+.heading--h1 {
+    --heading-scale: 9px;
+}
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading:not(.heading--h1):not(h1) {
+    --heading-scale: 6px;
+}
+
+// Heading Sizes
+@for $i from 1 through 6 {
+    h#{$i},
+    .heading--h#{$i} {
+        font-size: calc(var(--font-size) + var(--heading-scale) * (6 - #{$i}));
+    }
+}
+
+.heading {
+    &__link {
+        --col-link: var(--col-alpha) !important;
+    }
+}
+
+// ------------------------
+
+// -- Copy
+
+.content[class*='content--'],
+.wp-block-column,
+.wp-block-group__inner-container {
+    > *:not(section):not(.section):not(.aube-block) + *:not(.wp-block-spacer) {
+        margin-top: var(--spacing);
+    }
+}
+
+.content[class*='content--'] {
+    line-height: 1.35;
+
+    > section + *,
+    > .section + *,
+    > .aube-block + * {
+        margin-top: calc(var(--spacing) * 4);
+    }
+
+    // Links
+    a {
+        transition: all var(--base-animation-length) linear;
+
+        @include hyperlink(
+            (
+                base: var(--col-link),
+                hover: var(--col-link-hover),
+                active: var(--col-link-active),
+            ),
+            false
+        );
+    }
+
+    // Lists
+    ul,
+    ol {
+        width: 100%;
+        padding-left: var(--spacing);
+
+        li {
+            line-height: 1.75em;
+        }
+        ul,
+        ol {
+            margin: calc(var(--spacing) / 4) 0;
+        }
+    }
+
+    // Tables
+    table {
+        //border-collapse: separate; border-spacing: 0;
+        tbody {
+            tr {
+                border: 1px solid var(--col-line);
+
+                td,
+                th {
+                    padding: 0.75em;
+                    line-height: 1.25em;
+                    border-right: 1px solid var(--col-line);
+                }
+                th {
+                    font-weight: bold;
+                    letter-spacing: 0.05em;
+                }
+            }
+        }
+    }
+
+    br {
+        margin-top: 0 !important;
+    }
+
+    // Separators
+    hr {
+        background-color: var(--col-line);
+        height: 0.2rem;
+        width: 100%;
+        margin: 2em auto !important;
+        border-style: none;
+
+        &:not(.is-style-wide) {
+            max-width: 100px;
+        }
+    }
+
+    // Quotes
+    blockquote {
+        --col-cite-text: #888;
+
+        padding: 0.25rem 0 0.25rem 1.5rem;
+        margin-left: var(--spacing);
+        border-left: 2px solid var(--col-line);
+        font-size: 1.75rem;
+        display: flex;
+        flex-direction: column;
+
+        > p {
+            display: inline;
+            padding-right: 3rem;
+        }
+
+        > cite {
+            align-self: flex-end;
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            color: var(--col-cite-text);
+
+            &:before {
+                content: '-';
+                display: inline-block;
+                margin-right: 0.2em;
+            }
+        }
+    }
+}

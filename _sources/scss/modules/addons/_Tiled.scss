@@ -1,0 +1,102 @@
+// ----------- Addon: aMasonry -----------
+
+$gallery_caption_bg_colour: #f8f8f8;
+$gallery_caption_text_colour: var(--col-text);
+
+.tiled {
+    position: relative;
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-rows: 1px;
+    grid-template-columns: repeat(auto-fit, minmax(var(--masonry-col-width), 1fr));
+    list-style: none;
+    padding: 0;
+    transition: opacity 0.3s linear;
+
+    --masonry-col-width: 250px;
+
+    &.cols-100 {
+        --masonry-col-width: 100px;
+    }
+    &.cols-150 {
+        --masonry-col-width: 150px;
+    }
+    &.cols-200 {
+        --masonry-col-width: 200px;
+    }
+    &.cols-250 {
+        --masonry-col-width: 250px;
+    }
+    &.cols-300 {
+        --masonry-col-width: 300px;
+    }
+    &.cols-350 {
+        --masonry-col-width: 350px;
+    }
+    &.cols-400 {
+        --masonry-col-width: 400px;
+    }
+    &.cols-450 {
+        --masonry-col-width: 450px;
+    }
+    &.cols-500 {
+        --masonry-col-width: 500px;
+    }
+    &.cols-550 {
+        --masonry-col-width: 550px;
+    }
+    &.col-600 {
+        --masonry-col-width: 600px;
+    }
+
+    > * {
+        grid-row-end: span var(--row-span, 20);
+        width: auto;
+        margin: 0;
+        transition: opacity var(--base-animation-length) linear;
+        &figure {
+            margin: 0;
+            height: 100%;
+        }
+        img {
+            display: block;
+        }
+        figcaption {
+            position: absolute;
+            padding: 40px 10px 5px;
+            text-align: center;
+            font-size: 0.8rem;
+            width: 100%;
+            max-height: 100%;
+            overflow: auto;
+            background-color: $gallery_caption_bg_colour;
+            color: $gallery_caption_text_colour;
+        }
+
+        &--hidden {
+            display: none !important;
+        }
+    }
+
+    &:not(.tiled--active) {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+        > * {
+            opacity: 0;
+        }
+        &:after {
+            content: 'Loading..';
+            position: absolute;
+            @include center;
+        }
+    }
+    &.tiled--active {
+        opacity: 1;
+    }
+
+    &:not(.keep-original-image-widths) img {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,113 @@
+/* 
+    This stylesheet only applies to the backend of WordPress 
+*/
+
+// -- Editor Tweaks
+
+// Base styles
+// Disables the system font if 'theme.json' file is present in the theme's root (WP 5.8+)
+.editor-styles-wrapper{
+    font-family: ---apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+    /*
+    // Make the page title bar longer
+    .edit-post-visual-editor__post-title-wrapper > *{
+        max-width: 1100px !important;
+    }
+    */
+}
+
+// Prevent select fields going full height in flexbox wrappers
+.components-flex.components-select-control{
+    height: auto !important;
+}
+
+// ----
+
+// -- Blocks
+
+// Page title block
+.editor-post-title{
+    border-bottom: 1px solid #000; color: #000;
+
+    &__input{
+        font-weight: normal !important; font-size: 2.75em !important;
+    }
+}
+
+// Button block
+
+%button-default{
+    min-width: 125px;
+    position: relative; display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; text-decoration: none; letter-spacing: 0.05em; line-height: 1.25;
+}
+
+%button-colour-vars{
+    --btn-bg-colour: #406bb6;
+    --btn-bg-colour-hover: #5C80BC;
+    --btn-bg-colour-active: #333333;
+    --btn-text-colour: #ffffff;
+}
+
+.wp-block-button{
+    @extend %button-colour-vars; @extend %button-default; 
+
+    &:not([class*='is-style-']), &.is-style-default{
+        @extend %button-colour-vars; @extend %button-colour-vars;
+    }
+
+    &:not(.has-text-color){
+        color: var(--btn-text-colour);
+
+        &:link, &:visited{
+            color: var(--btn-text-colour);
+        }
+        &:hover, &:focus{
+            color: var(--btn-text-colour);
+        }
+        &:active{
+            background-color: var(--btn-bg-colour-active);
+        }
+    }
+
+    &:not(.has-background){
+        background-color: var(--btn-bg-colour);
+
+        &:hover, &:focus{
+            background-color: var(--btn-bg-colour-hover);
+        }
+        &:active{
+            background-color: var(--btn-bg-colour-active);
+        }
+    }
+
+    &__link{
+        background-color: transparent !important;
+    }
+    
+}
+
+// Image block
+
+// If a SVG image, set a minimum width
+.wp-block-image img[src*=".svg"]{
+    min-width: 72px;
+}
+
+// Group block
+/*
+.wp-block-group{
+
+    .block-editor-block-list__layout{
+        z-index: 1;
+    }
+
+    > div[aria-hidden="true"]{
+        + * {
+            
+        }
+    }
+
+}
+*/

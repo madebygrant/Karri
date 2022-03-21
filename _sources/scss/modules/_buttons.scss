@@ -1,0 +1,76 @@
+// ----------- Buttons -----------
+
+// -- Base styling
+%button-default {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: var(--font-size);
+    letter-spacing: 0.05em;
+    line-height: 1.25;
+    padding: var(--padding);
+    min-width: var(--min-width);
+    transition: all var(--base-animation-length) var(--base-animation);
+}
+
+// -- CSS Variables
+%button-vars {
+    --font-size: 1rem;
+    --min-width: 125px;
+    --padding: 0.5rem 1.25rem;
+}
+
+%button-colour-vars {
+    --col-text: #ffffff;
+    --col-text-hover: #ffffff;
+    --col-text-active: #ffffff;
+    --col-bg: var(--col-alpha);
+    --col-bg-hover: var(--col-bravo);
+    --col-bg-active: #1f1f1f;
+}
+
+// ------------------------
+
+.content[class*='content--'] {
+    button,
+    [type='submit'],
+    [type='reset'],
+    [type='button'] {
+        &:not([disabled]) {
+            
+            @extend %button-vars;
+            @extend %button-colour-vars;
+            @extend %button-default;
+
+            background-color: var(--col-bg);
+            color: var(--col-text);
+
+            &:hover {
+                background-color: var(--col-bg-hover);
+                color: var(--col-text-hover);
+            }
+
+            &:active {
+                background-color: var(--col-bg-active);
+                color: var(--col-text-active);
+            }
+        }
+
+        &[disabled] {
+            --col-bg-disabled: #eee;
+            --col-text-disabled: var(--col-text);
+
+            @extend %button-default;
+            @extend %button-vars;
+
+            background-color: var(--col-bg-disabled);
+            color: var(--col-text-disabled);
+        }
+    }
+}

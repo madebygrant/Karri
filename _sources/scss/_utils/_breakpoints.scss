@@ -1,0 +1,41 @@
+// ----------- Media Breakpoints -----------
+
+$__breakpoints: (
+    -T: 359px,
+    T: 360px,
+    +T: 361px,
+
+    -XS: 479px,
+    XS: 480px,
+    +XS: 481px,
+
+    -S: 639px,
+    S: 640px,
+    +S: 641px,
+
+    -SM: 767px,
+    SM: 768px,
+    +SM: 769px,
+
+    -M: 959px,
+    M: 960px,
+    +M: 961px,
+
+    -ML: 1023px,
+    ML: 1024px,
+    +ML: 1025px,
+
+    -L: 1279px,
+    L: 1280px,
+    +L: 1281px,
+
+    -XL: 1365px,
+    XL: 1366px,
+    +XL: 1367px,
+    
+    container: 1280px,
+    full: 1920px,
+
+    ss-menu: 960px,
+    +ss-menu: 961px
+);

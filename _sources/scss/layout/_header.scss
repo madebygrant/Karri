@@ -1,0 +1,22 @@
+// ----------- Header -----------
+
+.masthead {
+    &__inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__branding {
+        flex-basis: 200px;
+        margin-right: 2rem;
+    }
+}
+
+// If the Kin Menu JS plugin is active
+body.kin-is--loaded {
+    .masthead {
+        display: none;
+    }
+}

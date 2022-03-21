@@ -1,0 +1,18 @@
+// ----------- Website footer navigation -----------
+
+.navigation__menu--footer {
+    li {
+        --col-menu-bg: transparent;
+        --col-menu-bg-hover: transparent;
+        --col-menu-bg-active: transparent;
+        --col-menu-bg-current: transparent;
+        --col-menu-text: var(--col-text);
+        --col-menu-text-hover: #ccc;
+        --col-menu-text-active: #444;
+        --col-menu-text-current: var(--col-alpha);
+
+        a {
+            padding: 0.35rem 0.75rem;
+        }
+    }
+}

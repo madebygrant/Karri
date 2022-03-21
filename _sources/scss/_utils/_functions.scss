@@ -1,0 +1,22 @@
+// Get items from SASS maps
+@function _get($map, $parent, $child:false) {
+    @if $child != false{
+        @return map-get(map-get($map, $parent), $child);
+    }
+    @else{
+        @return map-get($map, $parent);
+    }
+}
+
+// Get Breakpoints
+@function _breakpoint($attr){
+    @if( type-of($attr) == 'number' ){
+        @return $attr;
+    }
+    @else if($attr and $attr != false){
+        @return map-get($__breakpoints, $attr);
+    }
+    @else{
+        @return false;
+    }
+}

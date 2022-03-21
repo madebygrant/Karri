@@ -1,0 +1,7 @@
+{
+    "asi" : true,
+    "globals" : true,
+    "undef" : true,
+    "esversion": 6,
+    "browser" : true
+}

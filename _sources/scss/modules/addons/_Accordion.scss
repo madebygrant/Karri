@@ -1,0 +1,196 @@
+// ----------- Addon: Accordion -----------
+/*
+<div class="accordion">
+    <div class="acc-item">
+        <h3 class="title">Content Title</h3>
+        <div>Content goes here.</div>
+    </div>
+    <div class="acc-item">
+        <h3 class="title">Content Title</h3>
+        <div>Content goes here.</div>
+    </div>
+</div>
+*/
+
+$trigger-colour: var(--col-text);
+
+$accordion-animation-length: 1;
+$accordion-animation-small: $accordion-animation-length / 3;
+
+$accordion-item-side-padding: 5rem;
+$accordion-trigger-topbottom-padding: 1rem;
+$accordion-content-bottom-padding: 3rem;
+$accordion-content-top-padding: $accordion-content-bottom-padding - $accordion-trigger-topbottom-padding;
+
+$trigger-icon-width: 12px;
+$trigger-icon-height: $trigger-icon-width;
+$trigger-icon-line-width: 2px;
+
+// ------------------------
+
+.accordion:not(.aube-block),
+.an-accordion {
+    transition: opacity 0.2s linear;
+
+    &:not(.loaded) {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &.loaded {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    > div,
+    > section {
+        width: 100%;
+
+        .acc-trigger {
+            cursor: pointer;
+            width: 100%;
+            padding: $accordion-trigger-topbottom-padding $accordion-item-side-padding;
+            position: relative;
+            text-align: left;
+            z-index: 1;
+            color: $trigger-colour !important;
+            transition: all #{$accordion-animation-small}s;
+
+            h1,
+            h2,
+            h3 {
+                font-weight: normal;
+                margin-right: 64px !important;
+                @extend .heading--h2;
+            }
+
+            & > * {
+                margin: 0;
+            }
+
+        }
+
+        &.chevron {
+            .acc-trigger {
+                &:after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    display: block;
+                    text-align: center;
+                    width: 64px;
+                    height: 100%;
+                    background-color: transparent !important;
+                    background-size: 16px;
+                    background-position: 50%;
+                    background-repeat: no-repeat;
+                    backface-visibility: hidden;
+                    transition: width #{$accordion-animation-small}s cubic-bezier(0, 0, 0.58, 1) #{$accordion-animation-small}s,
+                        transform #{$accordion-animation-small}s ease;
+                    background-image: url(#{$icon--chevron-down-b});
+                    @include center(y);
+                }
+                &.trigger-active {
+                    &:after {
+                        transform: translateY(-50%) rotate(-180deg) translate3d(0, 0, 0);
+                        backface-visibility: hidden;
+                    }
+                }
+            }
+        }
+
+        &.plus {
+            .acc-trigger {
+                .acc-icon {
+                    width: $trigger-icon-width;
+                    height: $trigger-icon-height;
+                    position: absolute;
+                    right: 15px;
+                    @include center(y);
+
+                    &:before,
+                    &:after {
+                        position: absolute;
+                        content: '';
+                        background-color: $trigger-colour;
+                        transition: transform 0.35s ease-out;
+                    }
+                    &:before {
+                        top: 0;
+                        left: 50%;
+                        width: $trigger-icon-line-width;
+                        height: 100%;
+                        margin-left: -$trigger-icon-line-width / 2;
+                    }
+                    &:after {
+                        top: 50%;
+                        left: 0;
+                        width: 100%;
+                        height: $trigger-icon-line-width;
+                        margin-top: -$trigger-icon-line-width / 2;
+                    }
+                }
+
+                &.trigger-active {
+                    .acc-icon {
+                        &:before {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:not(.custom-toggle) .acc-content {
+            display: none;
+            padding: 0 $accordion-item-side-padding;
+
+            &:before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: $accordion-content-top-padding;
+            }
+            &:after {
+                content: '';
+                display: block;
+                width: 100%;
+                height: $accordion-content-bottom-padding;
+            }
+            > *:last-of-type {
+                margin-bottom: 0;
+                //margin-left: $accordion-item-padding; margin-right: $accordion-item-padding;
+            }
+        }
+
+        &:not(:last-of-type) {
+            .acc-trigger {
+                margin: 0 !important;
+                > * {
+                    margin: 0;
+                }
+            }
+        }
+
+        &:last-of-type {
+            .acc-trigger {
+                margin: 0 !important;
+            }
+            .acc-content {
+                border-bottom: 2px solid transparent;
+            }
+        }
+
+        &.custom-toggle {
+            .acc-content {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height #{$accordion-animation-length}s ease-out;
+                &.content-active {
+                    transition: max-height #{$accordion-animation-length}s ease-in;
+                    max-height: 200vh;
+                }
+            }
+        }
+    }
+}

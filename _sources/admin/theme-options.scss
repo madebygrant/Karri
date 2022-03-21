@@ -1,0 +1,165 @@
+.theme-options{
+
+    margin: 2rem auto 0; width: 100%; max-width: 1024px; position: relative; border-radius: 2px; overflow: hidden;
+    color: #1d2327;
+
+    &__inner{
+        background-color: #fff; min-height: 400px; padding: 1.5rem;
+    }
+
+    &__header--page{
+        display: block; padding: 0 0 1rem; text-align: center;
+        //
+    }
+
+    &:not(.theme-options--has-tabs){
+        .theme-options__header--page{
+            margin-bottom: 2rem; border-bottom: 1px solid #eee;
+        }
+    }
+
+    &__heading--page{
+        letter-spacing: .025em;
+    }
+
+    &__separator{
+        margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #eee;
+    }
+
+    &__note{
+        color: #888; font-size: 14px; grid-column: 1 / -1;
+    }
+
+    &__group{
+        width: 100%;
+
+        .theme-options__label{
+            min-width: 150px; font-size: 14px;
+        }
+
+        > .theme-options__heading{
+            grid-column: 1 / -1; font-size: 1rem; margin-bottom: 1rem; margin-top: 0rem !important;
+
+            > * {
+                margin-top: 1rem;
+            }
+        }
+
+        .theme-options__heading{
+            margin-top: 1rem;
+        }
+
+        > .theme-options__note{
+            margin-bottom: 2rem;
+        }
+
+        &:not(.theme-options__group--tabbed) + .theme-options__group:not(.theme-options__group--last){
+            margin-top: 2.5rem;
+        }
+
+        &--has-submit{
+            margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee; text-align: right;
+            
+            button{
+                grid-column: 2;
+            }
+        }
+
+        &--tabbed{
+            position: absolute; top: 0; left: 0; width: 100%; transition: opacity .2s linear;
+            padding: 2rem 0;
+
+            &.theme-options__group--active{
+                opacity: 1; z-index: 0;
+            }
+            &:not(.theme-options__group--active){
+                opacity: 0; z-index: -1;
+            }
+
+        }
+    }
+
+    &__item{
+        display: grid; grid-template-columns: 185px 1fr; gap: 1rem; align-items: flex-start;
+
+        + .theme-options__item{
+            margin-top: 1.5rem;
+        }
+    }
+
+    &__option{
+        &--medium{
+            input, select{
+                width: 25%; min-width: 300px;
+            }
+        }
+        &--large{
+            input, select{
+                width: 50%; min-width: 600px;
+            }
+        }
+        &--full{
+            input, select{
+                width: 100%; min-width: 930px;
+            }
+        }
+
+    }
+
+    .notices{
+        position: absolute; top: 32px; right: 32px;
+
+        &__notice{
+            min-width: 150px; padding: 10px 16px; margin: 0; transition: opacity .25s ease-in-out;
+            background-color: var(--col-bg); color: var(--col-text); text-align: center;
+            box-shadow: 0px 4px 6px -1px rgba(0,0,0,0.1) , 0px 2px 4px -1px rgba(0,0,0,0.06) ;
+
+            &--active{
+                opacity: 1;
+            }
+            &:not(.notices__notice--active){
+                opacity: 0;
+            }
+
+            &--success{
+                --col-bg: #76c893; --col-text: #fff;
+            }
+            &--error{
+                --col-bg: #d62828; --col-text: #fff;
+            }
+            &--info, &:not(.notices__notice--success):not(.notices__notice--error){
+                --col-bg: #eee; --col-text: #000;
+            }
+
+        }
+    }
+
+    &__tabbed-groups{
+        position: relative;
+    }
+
+    &__tabs{
+        display: flex; flex-direction: row; flex-wrap: nowrap; border-bottom: 2px solid #eee;
+
+        &-button{
+            border: none; padding: 0.5em 1rem 1.25rem; flex-basis: 200px; cursor: pointer; background-color: #fff; position: relative;
+            border-bottom: 2px solid #eee; font-size: 14px;
+            position: relative; margin-bottom: -2px; top: 0; 
+
+            &--active{
+                border-bottom-color: #333 !important; font-weight: bold;
+
+                &:after{
+                    content: ""; background: #fff; position: absolute;
+                    width: 12px; height: 12px; left: 50%; bottom: -6px; margin-left: -6px; transform: rotate(45deg); box-shadow: inset 2px 2px 0px #333;
+                }
+            }
+        }
+    }
+
+    // WP Core
+
+    .components-base-control__help{
+        margin-top: 0 !important; margin-bottom: 0;
+    }
+}

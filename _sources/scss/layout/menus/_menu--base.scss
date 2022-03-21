@@ -1,0 +1,93 @@
+// ----------- Website navigation (aka menus) -----------
+
+.navigation {
+    &__menu {
+        &:not(.navigation__menu--footer) {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        li {
+            /*
+            --col-menu-bg: transparent;
+            --col-menu-bg-hover: var(--col-alpha);
+            --col-menu-bg-active: #222;
+            --col-menu-bg-current: #222;
+            --col-menu-text: var(--col-text);
+            --col-menu-text-hover: #fff;
+            --col-menu-text-active: #fff;
+            --col-menu-text-current: #fff;
+            */
+
+            position: relative;
+            z-index: 2;
+            display: flex;
+            background-color: var(--col-menu-bg);
+            color: var(--col-menu-text);
+            transition: color var(--base-animation-length) linear, background-color var(--base-animation-length) linear,
+                border var(--base-animation-length) linear;
+
+            &:hover,
+            &:focus {
+                background-color: var(--col-menu-bg-hover);
+                color: var(--col-menu-text-hover);
+            }
+            &:active {
+                background-color: var(--col-menu-bg-active);
+                color: var(--col-menu-text-active);
+            }
+
+            &.current_page_item {
+                background-color: var(--col-menu-bg-current);
+                color: var(--col-menu-text-current);
+            }
+        }
+
+        a {
+            display: block;
+            transition: none !important;
+
+            &:link,
+            &:visited,
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+
+        // -- Drop down
+        ul {
+            visibility: hidden;
+            opacity: 0;
+            z-index: -1;
+            position: absolute;
+            top: 100%;
+            transition: all var(--base-animation-length) ease-in;
+            min-width: 150px;
+
+            ul {
+                left: 100%;
+                top: 0;
+            }
+        }
+
+        li {
+            &:hover > ul {
+                visibility: visible;
+                opacity: 1;
+                z-index: 0;
+            }
+
+            li {
+                --col-menu-bg: #f8f8f8;
+
+                li {
+                    --col-menu-bg: #e5e5e5;
+                }
+            }
+        }
+    }
+}

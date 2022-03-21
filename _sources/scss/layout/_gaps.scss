@@ -1,0 +1,37 @@
+// ----------- Gaps -----------
+
+*[class*='gap-above'],
+[class*='gap-below'] {
+    --gap: var(--spacing);
+}
+
+.gap {
+    &-above {
+        margin-top: var(--gap);
+
+        &--half {
+            margin-top: calc(var(--gap) / 2);
+        }
+    }
+
+    &-below {
+        margin-bottom: var(--gap);
+
+        &--half {
+            margin-bottom: calc(var(--gap) / 2);
+        }
+    }
+
+    @for $i from 2 through 6 {
+        &-above {
+            &--x#{$i} {
+                margin-top: calc(var(--gap) * #{$i});
+            }
+        }
+        &-below {
+            &--x#{$i} {
+                margin-bottom: calc(var(--gap) * #{$i});
+            }
+        }
+    }
+}
