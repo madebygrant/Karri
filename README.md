@@ -4,7 +4,7 @@ This is a theme I created for myself as a starting point to develop themes upon,
 
 This repository is more a reference as the theme is **unlikely to be maintained**.
 
-Where WordPress is heading in the near future.. it's geared towards using block-based themes. 
+WordPress is heading towards using block themes nowadays, not php templates anymore.
 
 ### Directory List
 
